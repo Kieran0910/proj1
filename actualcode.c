@@ -4,10 +4,11 @@
 int main () {
     int n;
     int key; //allows user input for how many spaces to shift message
-    char string[100];
+    char s1[100];
+    fgets(s1);
     
     printf("Enter your message for encryption\n");
-    scanf(" %[^\n]%*c", string);
+    scanf(" %s", s1 );
 
     printf("insert your key\n");
     scanf("%d", &key);

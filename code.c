@@ -17,10 +17,15 @@ int main () {
         if((s1[n] >= 65) && (s1[n] <= 90)){
             s1[n] = s1[n] + key;
         }
+        if((s1[n]) > 90){
+           s1[n] = s1[n] - 26;
+        }
+        
         if((s1[n] >= 97) && (s1[n] <= 122)){
             s1[n] = s1[n] + key - 32;
         }
+        if((s1[n]) > 90){
+           s1[n] = s1[n] - 26;
+        }
     }
     
-    printf("Your Encription is: %s\n", s1);
-  

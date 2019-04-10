@@ -58,4 +58,10 @@ int main () {
     
         printf("Your Decryption is: %s\n", s1); //Prints decryption
         }
+    
+    
+    
+    if(input != 1 || input != 2)   {
+        printf("Wrong input please enter either\n 1. = Encrypt Message.\n 2. = Decrypt Message. \n");
+    }
     }

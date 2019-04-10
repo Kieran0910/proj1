@@ -8,7 +8,7 @@ int main () {
     
     
     printf("Enter your message for encryption\n");
-    scanf(" %[^\n]%*c", s1 );
+    scanf(" %[^\n]", s1 );
 
     printf("insert your key\n");
     scanf("%d", &key);
@@ -28,4 +28,8 @@ int main () {
            s1[n] = s1[n] - 26;
         }
     }
+    
+    printf("Your Encription is: %s\n", s1);
+  
+}
     

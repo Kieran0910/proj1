@@ -16,9 +16,10 @@ int main () {
     printf("1 = Encrypt Message.\n");
     printf("2 = Decrypt Message.\n");
     scanf("%d", &input);
-    }   while(input < 1 || input >2);
+    }
+    while(input < 1 || input >2);
     
-    if(input == 1)  { //encription
+    if(input == 1)  { //Encription
         for( n=0 ; n < strlen(s1) ; n++ )   {
             if((s1[n] >= 65) && (s1[n] <= 90))  { //if a capital letter
                 s1[n] = s1[n] - key;  //minuses the key given
@@ -33,8 +34,9 @@ int main () {
                 }
             }
         }
-        printf("Your Encryption is: %s\n", s1); //Prints encryption
-        
+    
+        printf("Your Encription is: %s\n", s1); //Prints Encription
+    }
     if(input == 2)  { //Decryption
         for( n=0 ; n < strlen(s1) ; n++ )   {
             if((s1[n] >= 65) && (s1[n] <= 90))  { //If a capitial letter entered 
@@ -50,8 +52,8 @@ int main () {
                 }
             }
         }
-        printf("Your Decryption is: %s\n", s1); //Prints decryption
+    
+        printf("Your Decryption is: %s\n", s1); //prints the Decryption string to user
+        }
     }
-    }
-}
 

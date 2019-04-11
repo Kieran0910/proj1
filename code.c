@@ -56,7 +56,6 @@ int main () {
                 }
             }
         }
-    
         printf("Your Decryption is: %s\n", s1); //Prints decryption
     }
     }

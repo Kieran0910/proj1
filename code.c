@@ -2,22 +2,30 @@
 #include <string.h>
 
 int main () {
-    int n, input;
+    int n, input, RS;
     int key; //allows user input for how many spaces to shift message
     char s1[100]; //initilise a string
     
+    do  {
+    printf("\nDo you want to use Substition Cipher \nOr The rotation Cipher\n");
+    printf("\n1. Rotation Cipher\n");
+    printf("2. Substitution Cipher\n");
+    scanf("%d", &RS);
+    } while(RS < 1 || RS >2);
+    
+    
+    if(RS == 1) {
     printf("Enter your message to encrypt or decrypt:\n"); //use input
     scanf(" %[^\n]", s1 ); //scans user input into the string created above
 
     printf("insert your key\n"); //key allows for rotation of given amount
     scanf("%d", &key);
-    do {
-    printf("Select from options below:\n"); //allows user to select what to do with there messege
-    printf("1 = Encrypt Message.\n");
-    printf("2 = Decrypt Message.\n");
-    scanf("%d", &input);
-    }
-    while(input < 1 || input >2);
+    do  {
+        printf("Select from options below:\n"); //allows user to select what to do with there messege
+        printf("1 = Encrypt Message.\n");
+        printf("2 = Decrypt Message.\n");
+        scanf("%d", &input);
+    }   while(input < 1 || input >2);
     
     if(input == 1)  { //Encription
         for( n=0 ; n < strlen(s1) ; n++ )   {
@@ -56,4 +64,20 @@ int main () {
         printf("Your Decryption is: %s\n", s1); //prints the Decryption string to user
         }
     }
+    if(RS == 2) {
+        printf("Enter your message to encrypt or decrypt:\n");
+        scanf(" %[^\n]", s1 ); //use input
+        do  {
+            printf("Select from options below:\n"); //allows user to select what to do with there messege
+            printf("1 = Encrypt Message.\n");
+            printf("2 = Decrypt Message.\n");
+            scanf("%d", &input);
+        }   while(input < 1 || input >2);
+    if(input == 1) {
+        
+        
+    }
+    }
+}
+
 

@@ -19,29 +19,7 @@ int main () {
     }
     while(input < 1 || input >2);
     
-    if(input == 1)  { //Encryption 
-        for( n=0 ; n < strlen(s1) ; n++ )   {
-            if((s1[n] >= 65) && (s1[n] <= 90))  { //If a capitial letter entered 
-                s1[n] = s1[n] + key; // shifts number of spaces
-                if((s1[n]) > 90)    {
-                    s1[n] = s1[n] - 26; //allows for rollover from Z back to A
-                }
-            }
-            if((s1[n] >= 97) && (s1[n] <= 122)) { //allows for input of lowercase letters
-                s1[n] = s1[n] + key - 32; //converts to capital letters and adds the key
-                if((s1[n]) > 90)    { 
-                    s1[n] = s1[n] - 26; //allows for rollover 
-                }
-            }
-        }
-    
-        printf("Your Encription is: %s\n", s1); //prints the encrytion string to user
-        }
-    
-    
-    
-    
-    if(input == 2)  { //Decryption
+    if(input == 1)  { //encription
         for( n=0 ; n < strlen(s1) ; n++ )   {
             if((s1[n] >= 65) && (s1[n] <= 90))  { //if a capital letter
                 s1[n] = s1[n] - key;  //minuses the key given
@@ -56,7 +34,25 @@ int main () {
                 }
             }
         }
+        printf("Your Encryption is: %s\n", s1); //Prints encryption
+        
+    if(input == 2)  { //Decryption
+        for( n=0 ; n < strlen(s1) ; n++ )   {
+            if((s1[n] >= 65) && (s1[n] <= 90))  { //If a capitial letter entered 
+                s1[n] = s1[n] + key; // shifts number of spaces
+                if((s1[n]) > 90)    {
+                    s1[n] = s1[n] - 26; //allows for rollover from Z back to A
+                }
+            }
+            if((s1[n] >= 97) && (s1[n] <= 122)) { //allows for input of lowercase letters
+                s1[n] = s1[n] + key - 32; //converts to capital letters and adds the key
+                if((s1[n]) > 90)    { 
+                    s1[n] = s1[n] - 26; //allows for rollover 
+                }
+            }
     
         printf("Your Decryption is: %s\n", s1); //Prints decryption
+        }
     }
     }
+}

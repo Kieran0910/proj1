@@ -81,10 +81,10 @@ int main () {
             printf("2 = Decrypt Message.\n");
             scanf("%d", &input);
         }   while(input < 1 || input >2);
-    if(input == 1) {
+        if(input == 1) {
         
         
-    }
+        }
     }
 }
 

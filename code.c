@@ -90,7 +90,7 @@ int main () {
         }   while(input < 1 || input >2);
         if(input == 1) {
             for(n=0 ; n < strlen(s1) ; n++ ) {
-                a = s[n];
+                a = s1[n];
                 if(a > 96 && a < 123) {
                 a = a - 32;  
                 }

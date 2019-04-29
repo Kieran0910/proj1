@@ -1,55 +1,62 @@
+/* Below is code used to Encrypt and decrypt a series of messages, using either a rotation
+cipher or substituition cipher. To get started select 1. rotation or 2. for substituition.
+Type your Messege followed by enter, and your key followed by enter.
+select to encript or decrpyt the message, printed to console will be entered message and the 
+decrypted or encrypted message */
+
 #include <stdio.h>
 #include <string.h>
 
 int main () {
-    int n, input, RS;
+    int n, a, input, RS; /* n used for counter for letters in a message,input is where menu 
+                            options are saved, RS is to chose rotaion or substtution */
     int key; //allows user input for how many spaces to shift message
     char s1[250];//initilise a string
     char s2[250]; //only used in substitution for cipher 
-    char s3[250];
-    char f1[250];
-    char f2[250];
+    char s3[250]; //used to allow for user input to be printed back to user
+    char f1[250]; //
+    char f2[250]; //
     
-    do  {
+    do  {   //do while loop prints menu back to user if input is not a 1 or 2 
     printf("\nDo you want to use Substition Cipher \nOr The rotation Cipher\n");
     printf("\n1. Rotation Cipher\n");
     printf("2. Substitution Cipher\n");
-    scanf("%d", &RS);
+    scanf("%d", &RS); //scans user input to RS which defines which if statement it is taken to next
     } while(RS < 1 || RS >2);
     
     
-    if(RS == 1) {
-        printf("\nEnter your message to encrypt or decrypt:\n"); //use input
-        scanf(" %[^\n]", s1 ); //scans user input into the string created above
-        printf("insert your key\n"); //key allows for rotation of given amount
-        scanf("%d", &key);
-        do  {
+    if(RS == 1) { //if RS == 1 user is taken here and the rotation cipher is started 
+        printf("\nEnter your message to encrypt or decrypt:\n"); 
+        scanf(" %[^\n]", s1 ); //scans user input into the string s1
+        printf("insert your key\n"); //key allows for a rotation of given amount
+        scanf("%d", &key); //key is assigned to key
+        do  { //once again a do while loop is used to make sure correct input
             printf("\nSelect from options below:\n"); //allows user to select what to do with there messege
             printf("1 = Encrypt Message.\n");
             printf("2 = Decrypt Message.\n");
             scanf("%d", &input);
-        }   while(input < 1 || input >2);
+        }   while(input < 1 || input >2); //menu will repeat if wrong input
     
-        if(input == 1)  { //Encription
-            for( n=0 ; n < strlen(s1) ; n++ )   {
-                f1[n] = s1[n];
+        if(input == 1)  { //Encription for the rotation cipher 
+            for( n=0 ; n < strlen(s1) ; n++ )   { // for loop to read each letter of string and subtract the key
+                f1[n] = s1[n]; //allows for user input to be printed later
                 if((s1[n] >= 65) && (s1[n] <= 90))  { //if a capital letter
                     s1[n] = s1[n] - key;  //minuses the key given
                     if((s1[n]) < 65)    { 
                         s1[n] = s1[n] + 26; //allows for rollover if before A
                     }
                 }
-                if((s1[n] >= 97) && (s1[n] <= 122)) {
+                if((s1[n] >= 97) && (s1[n] <= 122)) { //lowercase letter entered 
                     s1[n] = s1[n] - key - 32;
-                    if((s1[n]) < 65)    {
+                    if((s1[n]) < 65)    { //rollover from z-a 
                         s1[n] = s1[n] + 26;
                     }
                 }
             }
-            printf("\nRecieved input is: %s\n", f1);
-            printf("\nYour Encription is: %s\n", s1); //Prints Encription
+            printf("\nRecieved input is: %s\n", f1); //prints users intial input
+            printf("\nYour Encription is: %s\n", s1); //Prints final Encription
         }
-        if(input == 2)  { //Decryption
+        if(input == 2)  { //Decryption of rotation
             for( n=0 ; n < strlen(s1) ; n++ )   {
                 f1[n] = s1[n];
                 if((s1[n] >= 65) && (s1[n] <= 90))  { //If a capitial letter entered 
@@ -66,14 +73,14 @@ int main () {
                     }
                 }
             }
-            printf("\nRecieved input is: %s\n", f1);
+            printf("\nRecieved input is: %s\n", f1); //prints user inital input
             printf("\nYour Decryption is: %s\n", s1); //prints the Decryption string to user
         }
     }
-    if(RS == 2) {
+    if(RS == 2) { // substution cipher
         printf("\nEnter your message to encrypt or decrypt:\n");
         scanf(" %[^\n]", s1 ); //user input
-        printf("Enter Ciper code");
+        printf("Enter Ciper key\n");
         scanf(" %[^\n]", s2 );
         do  {
             printf("\nSelect from options below:\n"); //allows user to select what to do with there messege
@@ -82,8 +89,13 @@ int main () {
             scanf("%d", &input);
         }   while(input < 1 || input >2);
         if(input == 1) {
-        
-        
+            for(n=0 ; n < strlen(s1) ; n++ ) {
+                a = s[n];
+                if(a > 96 && a < 123) {
+                a = a - 32;  
+                }
+            }
+             printf("%s\n", s1);  
         }
     }
 }

@@ -6,6 +6,15 @@ decrypted or encrypted message */
 
 #include <stdio.h>
 #include <string.h>
+#include<stdlib.h>
+#include<ctype.h>
+
+#define SHIFT_MAX      26
+#define NUMBER_OF_LETTERS    26
+#define NUMBER_OF_DIGITS    10
+#define CAESAR_CIPHER_SPECIAL_CHARS  " .!?,;:'()[]{}`"
+
+
 
 int main () {
     int n, a, input, RS; /* n used for counter for letters in a message,input is where menu 
@@ -16,6 +25,7 @@ int main () {
     char s3[250]; //used to allow for user input to be printed back to user
     char f1[250]; //
     char f2[250]; //
+    char SimpleSubstitutionCipher_Code();
     
     do  {   //do while loop prints menu back to user if input is not a 1 or 2 
     printf("\nDo you want to use Substition Cipher \nOr The rotation Cipher\n");
@@ -78,27 +88,61 @@ int main () {
         }
     }
     if(RS == 2) { // substution cipher
-        printf("\nEnter your message to encrypt or decrypt:\n");
-        scanf(" %[^\n]", s1 ); //user input
-        printf("Enter Ciper key\n");
-        scanf(" %[^\n]", s2 );
-        do  {
-            printf("\nSelect from options below:\n"); //allows user to select what to do with there messege
-            printf("1 = Encrypt Message.\n");
-            printf("2 = Decrypt Message.\n");
-            scanf("%d", &input);
-        }   while(input < 1 || input >2);
-        if(input == 1) {
-            for(n=0 ; n < strlen(s1) ; n++ ) {
-                a = s1[n];
-                if(a > 96 && a < 123) {
-                a = a - 32;  
+        char originalAlphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+        char codedAlphabet[]    = "QWERTYUIOPASDFGHJKLZXCVBNM#";
+        char originalMessage[]  = "SUBSTITUTION CIPHER";
+        char encodedMessage[250];
+        char decodedMessage[250];
+        
+        typedef enum
+        {
+         OPERATION_SUCCESS = 1U,
+         OPERATION_FAILED  = 0U
+        }OPERATION_STATUS;
+            
+            {
+             unsigned short alphabetLength = strlen(originalAlphabet);
+             unsigned int messageLength    = strlen(originalMessage);
+             unsigned int i = 0U;
+             char* pointer = NULL;
+             unsigned int position = 0U;
+             if( alphabetLength != strlen(codedAlphabet) )
+                {
+                //The lengths of the alphabets do not match
+                return OPERATION_FAILED;
                 }
-            }
-             printf("%s\n", s1);  
+                for(i=0; i<messageLength; i++)
+                    {
+                    pointer  = strchr(originalAlphabet, originalMessage[i]);
+                    if(pointer==NULL)
+                        {
+                        //A character in the message was not found in the
+                        //original alphabet
+                        return OPERATION_FAILED;
+                        }
+                        else
+                            {
+                            position = pointer - originalAlphabet;
+                            encodedMessage[i] = codedAlphabet[position];
+                            }
+                            }
+                            encodedMessage[messageLength] = '\0';
+                            return OPERATION_SUCCESS;
+                            }
+                            {
+                             //Encoding
+                             SimpleSubstitutionCipher_Code(originalAlphabet,codedAlphabet,
+                                                           originalMessage, encodedMessage);
+                             puts(encodedMessage);
+                             //Decoding
+                             SimpleSubstitutionCipher_Code(codedAlphabet,originalAlphabet,
+                                                           encodedMessage, decodedMessage);
+                             puts(decodedMessage);
+                        }
+
+            
         }
     }
-}
 
 
 
